@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts/NewFile :: head">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Perfil</title>
+</head>
+
+<body>
+	<a href="/compra" class="btn btn-primary">Regresar</a>
+	<table class="table table-dark">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">PRIMER NOMBRE</th>
+				<th scope="col">SEGUNDO NOMBRE</th>
+				<th scope="col">PRIMER APELLIDO</th>
+				<th scope="col">SEGUNDO APELLIDO</th>
+				<th scope="col">DIRECCION</th>
+				<th scope="col">DUI</th>
+				<th scope="col">CORREO</th>
+				<th scope="col">OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="d:${cliend}">
+				<td th:text="${d.id}"></td>
+				<td th:text="${d.nombre1}"></td>
+				<td th:text="${d.nombre2}"></td>
+				<td th:text="${d.apellido}"></td>
+				<td th:text="${d.apellido2}"></td>
+				<td th:text="${d.direcion}"></td>
+				<td th:text="${d.dui}"></td>
+				<td th:text="${d.nick}"></td>
+				<td>
+					<a th:href="@{/llevarUsu}" class="btn btn-success">Editar Perfil</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

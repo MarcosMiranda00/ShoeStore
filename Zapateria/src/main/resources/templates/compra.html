@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Compras</title>
+</head>
+
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px; ">
+	<h1 style="text-align: center;">Compra</h1> <br>
+
+	<h1><label modelAttribute="ERROR1" th:text="${mensaje}" style="color: blue;"></label  ></h1>	
+
+	<div style="position: absolute;
+height: 550px;
+width: 1100px;
+background: #214252;
+border-color: rgb(0, 0, 0);
+border:1px solid ;
+margin-left: 100px;
+ border-radius: 50px;">
+
+		<br>
+		<form action="/GuardarCompra" method="post" modelAttribute="pro">
+			<div style="
+    float: left;
+    width: 560px;
+	height: 500px;
+	margin-left: 50px;
+	margin-top: 10px;
+	background-color: 214252;">
+
+				<img th:src="@{'/imagenes/'+${pro.imagen}}" style="
+margin-left: 35px;
+width: 500px;
+	height: 450px;
+	background-color: 214252;" /><br>
+			</div>
+
+			<div style="
+    width: 500px;
+	height: 500px;
+	margin-left: 580px;
+	margin-top: 10px;
+	background-color: 214252;">
+				<br>
+				<input type="hidden" name="fkc" required="required" th:value="${clien}">
+				<input type="text" name="fkp" th:value="${pro.idProducto}" hidden>
+
+				<input type="text" name="nombrepp" th:value="${pro.nombre}" hidden>
+				<input type="text" name="preciopp" th:value="${pro.Precio}" hidden>
+				<input type="text" name="imagenpp" th:value="${pro.imagen}" hidden>
+				<input type="text" name="estadopp" th:value="${pro.estado}" hidden>
+				<input type="text" name="marcapp" th:value="${pro.marca}" hidden>
+				<input type="text" name="tallapp" th:value="${pro.talla}" hidden>
+				<input type="text" name="colorespp" th:value="${pro.colores}" hidden>
+				<input type="text" name="cantidadpp" id="can1" th:value="${pro.cantidad}" hidden>
+				<input type="text" name="categoriapp" th:value="${pro.FkCategoria.idCategoria}" hidden>
+				<input type="text" name="cantidadApp" id="rescan" value="0" hidden >
+
+
+				<div style="margin-left: 100px; margin-top: 100px;">
+				<label><b>
+							<h4 style="color: white;">EXISTENCIAS:</h4>
+						</b></label>
+					<input type="number" name="NAAADAD" id="nandna" 
+					disabled th:value="${pro.cantidad}"  style="margin-left: 10px;color: green;">
+					<br>
+					<label><b>
+							<h4 style="color: white;">NOMBRE:</h4>
+						</b></label>
+					<input type="text" th:value="${pro.nombre}" name="nombre" hidden="">
+					<input type="text" th:value="${pro.nombre}" disabled="disabled"
+						style="margin-left: 50px;color: green;"><br>
+
+					<label><b>
+							<h4 style="color: white;">CANTIDAD:</h4>
+						</b></label>
+					<input type="number" name="Cantidad"  value="1" max="50" min="1" id="a"
+						onchange="multiplicacion(this.value);" required style="margin-left: 30px;color: green;"><br>
+
+					<label><b>
+							<h4 style="color: white;">PRECIO:</h4>
+						</b></label>
+					<input type="text" th:value="${pro.Precio}" name="precio" hidden="" id="b"
+						onchange="multiplicacion(this.value);">
+					<input type="text" th:value="${pro.Precio}" disabled="disabled" style="margin-left: 65px; color: green;  
+width: 78px; height: 30px;"><label>
+						<h4 style="color: white;">$</h4>
+					</label><br>
+
+					<label><b>
+							<h4 style="color: white;">TOTAL:</h4>
+						</b></label>
+					<input type="text" name="total" value="0" id="r" th:value="${pro.Precio}" hidden="" maxlength="4"
+						onKeyPress="if(this.value.length==4) return false;">
+					<input type="text" value="0" id="r1" disabled="disabled" th:value="${pro.Precio}"
+						style="margin-left: 76px; color: green; width: 80px; height: 30px;"><label>
+						<h4 style="color: white;">$</h4>
+					</label>
+				</div>
+
+				<button class="btn btn-success" onclick="multiplicacion(this.value)"
+					style=" margin-top: 30px; width: 400px; height: 40px; margin-left: 50px">
+					<h3>COMPRAR</h3>
+				</button>
+				<br>
+				<a class="btn btn-danger" href="/compra" onclick="multiplicacion(this.value)"
+					style=" margin-top: 30px; width: 400px; height: 40px; margin-left: 50px">
+					<h3>CANCELAR</h3>
+				</a>
+
+			</div>
+		</form>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		function dosDecimales(n) {
+			let t = n.toString();
+			let regex = /(\d*.\d{0,2})/;
+			return t.match(regex)[0];
+		}
+
+		function multiplicacion(valor) {
+			var numero1 = Number($("#a").val());
+			var numero2 = Number($("#b").val());
+			var sumar = numero1 * numero2;
+			var resultado = $("#r").val(dosDecimales(sumar));
+			var resultado = $("#r1").val(dosDecimales(sumar));
+
+			var numero1 = Number($("#can1").val());
+			var numero2 = Number($("#a").val());
+			var restar = numero1 - numero2;
+			document.getElementById('rescan').value = restar
+		}
+	</script>
+</body>
+
+</html>

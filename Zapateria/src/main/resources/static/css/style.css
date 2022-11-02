@@ -1,0 +1,212 @@
+@charset "ISO-8859-1";
+body{
+	background-color: #F1F0F0;
+}
+.ubic{ 
+	
+	position:absolute;
+	margin-right: 2px;
+}
+.log{
+	width: 120px;
+	height: 53px;
+}
+.car{
+	margin-left:30px;
+	width: 190px;
+	height: 160px;
+	margin-top: 10px;
+}
+
+.pn1{
+	
+	background-color:white ;
+	width: 1450px;
+	height: 53px;
+}
+
+h1{
+	margin-right:35px;
+	margin-top:15px;
+	color:black;
+	font-size: 15px;
+	float: right;
+}
+.tx{
+	margin-right:40px;
+	margin-top:15px;
+	color:black;
+	font-size: 15px;
+	float: right;
+}
+.comb{
+	margin-left:35px;
+	margin-top:12px;
+	border: none;
+}
+.control{
+	margin-top:10px;
+	
+	border-radius:1px,5px;
+	width: 500px;
+	height: 35px;
+}
+.icon{
+	margin-top:15px;
+	margin-left:915px;
+	position:absolute;
+	width: 25px;
+	height: 25px;
+}
+
+svg{
+	margin-left:9px;
+	margin-top:12px;
+	width: 23px;
+	height: 23px;
+}
+.product{
+	margin-top: 10px;
+	float: left;
+	border-radius:5px;
+	margin-left:140px;
+	background-color: white;
+	width: 460px;
+	height: 240px;
+}
+.Bpn{
+	float:right;
+	margin-right:5px;
+	width:170px;
+	height: 53px;
+	background-color: white;
+}
+.Bpn2{
+	float:right;
+	margin-right:80px;
+	width:160px;
+	height: 53px;
+	background-color: white;
+}
+.Bpn3{
+	float:right;
+	margin-right:40px;
+	width:560px;
+	height: 53px;
+	background-color: white;
+}
+.linea2{
+	margin-top: 10px;
+	margin-left: 10px;
+	background-color: #E7E3E3;
+	width: 440px;
+	height: 1px;
+}
+.precio{
+	margin-top:200px;
+	background-color: white;
+	width: 460px;
+	height: 1px;
+}
+
+.btnalq{
+	text-align: center;
+	color:white;
+	border-radius:3px;
+	margin-right:6px;
+	margin-top:5px;
+	float: right;
+	background-color: #FF6106;
+	width: 120px;
+	height: 30px;
+}
+.txt2{
+	float:left;
+	margin-top: 6px;
+}
+
+.cpr{
+	float: right;
+	margin-right: 6px;
+}
+ .banner2{
+ 	margin-top: 800px;
+ 	background-color: #2D2C2C;
+ 	width: 100%;
+ 	height: 190px;
+ }
+ .txtbnn{
+ 	color: white;
+ 	margin-right: 270px;
+ 
+ 	font-size: 60px;
+ }
+ .icon1{
+ 	width: 40px;
+ 	height: 37px;
+ }
+ .icon2{
+ 	width: 30px;
+ 	height: 25px;
+ }
+.l1{
+	margin-top:20px;
+ 	margin-left:120px;
+ 	
+ 	color: white;
+ }
+ .l2{
+ 	margin-right: 500px;
+ 	color: white;
+ }
+
+ .redes{
+ 	background-color: red;
+ 	width: 100%;
+ 	height: 60px;
+ }
+
+ .ventflot{
+ 	border-radius: 3px;
+ 	position: absolute;
+ 	background-color: #F6F3F3;
+ 	width: 300px;
+ 	height: 120px;
+ 	margin-left: 540px;
+ 	margin-top: 200px;
+ 	display: none;
+ }
+ .btn-info{
+ 	margin-left: 100px;
+ }
+
+ .txtvent{
+ 	margin-right: 50px;
+ }
+ 
+ .dd{
+float: left; 
+ margin-left: 30px;
+ font-size: 15px;
+ }
+ 
+ .datcar{
+ width:220px;
+ height:170px;
+ background-color: white;
+ float:left;
+ }
+ .imgcar{
+
+ width:230px;
+ height:160px;
+ float: right;
+ }
+ 
+@media only screen and (max-width:620px) {
+  /* Adecuarlo a telefonos */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
+ 

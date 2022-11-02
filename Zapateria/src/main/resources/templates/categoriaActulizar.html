@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts/NewFile :: head">
+	<meta charset="utf-8">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CATEGORIAS</title>
+</head>
+
+<body>
+	<h4 style="text-align: center;">ACTUALIZAR CATEGORIAS</h4>
+	<a href="/categorias" class="btn btn-danger">REGRESAR</a>
+
+	<form action="/ActualizarCate" method="post" modelAttribute="cate">
+			<input type="text" name="id"  hidden required th:value=${cate.idCategoria}>
+			
+			<label>NOMBRE</label>
+			<input type="text" name="nombre" required="required" placeholder="Nombre CATEGORIA" th:value=${cate.nombreC}>
+			<br>
+		</p>
+		<p class="block">
+			<button class="btn btn-danger">ACTUALIZAR</button>
+		</p>
+	</form>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/NewFile :: head">
+ <meta charset="utf-8" />
+
+</head>
+<body style="background-color: white">
+
+<div style="width: 1500; height: 160px; background-color: #CACACA"> 
+
+<img src="/img/logoshoes.png" style="
+   position: absolute;
+    height: 200px; 
+    width: 320px; 
+    " alt="" > 
+
+     <a href="/Menu" ><img  src="img/cerrarsesion.png" style=" height: 50px; 
+    width: 50px; position: absolute; margin-left: 1990px; margin-top: 50px;"></a>
+
+</div>
+<br>
+    
+    <div style="background-color: red; width: 300px; height: 200px; border-radius: 4px;">
+       <div style="background-color:  #CACACA; width: 300px; height: 20px; margin-top: 80px; border-radius: 4px;"></div>
+    </div>
+
+
+
+          <tr th:each="d:${detalle}" th:if="${d.FkCliente.getId()==user}">
+          <td th:text="${d.idDetalleCompra}"></td> 
+          <td th:text="${d.FkCompra.getFecha()}"></td> 	 
+          <td th:text="${d.FkProducto.getNombre()}"></td>   
+          <td th:text="${d.Precio} + '$'"></td> 
+          <td th:text="${d.Cantidad}"></td> 
+           <td th:text="${d.FkCompra.getTotal()} + '$'"></td> 
+          <td th:text="${d.FkCliente.getNombre1()}"></td>
+              
+         
+</body>
+</html>

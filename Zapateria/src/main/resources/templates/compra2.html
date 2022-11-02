@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<title>Compras</title>
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px; ">
+
+
+    <h1 style="text-align: center;">Compra</h1> <br>
+
+
+<div style="position: absolute;
+height: 550px;
+width: 1100px;
+background: #214252;
+border-color: rgb(0, 0, 0);
+border:1px solid ;
+margin-left: 100px"> 
+<br>
+
+
+
+<form action="/GuardarCompra2" method="post" modelAttribute="car"> 
+
+<div style="
+    float: left;
+    width: 560px;
+	height: 500px;
+	margin-left: 50px;
+	margin-top: 10px;
+	background-color: 214252;">
+	
+<img th:src="@{'/imagenes/'+${car.imagen}}" style="
+margin-left: 35px;
+width: 500px;
+	height: 450px;
+	background-color: 214252;"/><br>
+	
+</div>
+
+<div style="
+    width: 500px;
+	height: 500px;
+	margin-left: 580px;
+	margin-top: 10px;
+	background-color: 214252;">
+	<br>
+	
+<input type="text" name="idcar" required="required" th:value="${car.idCarrito}" hidden>
+<input type="text" name="img" required="required" th:value="${car.imagen}" hidden="">
+<input type="text" name="fkc" required="required" th:value="${car.FkCliente2.getId()}" hidden>
+<input type="text" name="fkp" th:value="${car.FkProducto2.getIdProducto()}" hidden="">
+
+<div style="margin-left: 100px; margin-top: 100px;">
+<label><b><h4 style="color: white;">NOMBRE:</h4></b></label>
+<input type="text" th:value="${car.nombre}" name="nombre" hidden="">
+<input type="text" th:value="${car.nombre}" disabled="disabled"  style="margin-left: 50px;color: green;"><br>
+
+<label><b><h4 style="color: white;">CANTIDAD:</h4></b></label>
+<input type="number"  th:value="${car.Cantidad}" max="50" min="1" id="a"  
+onchange="multiplicacion(this.value);" disabled="disabled"  required style="margin-left: 30px;color: green;" ><br>
+<input type="text" name="Cantidad" th:value="${car.Cantidad}" hidden>
+
+<label><b><h4 style="color: white;">PRECIO:</h4></b></label>
+<input type="text" th:value="${car.precio}"  name="precio"  hidden="" id="b" onchange="multiplicacion(this.value);">
+<input type="text" th:value="${car.precio}"  
+disabled="disabled"  
+style="margin-left: 68px; color: green; width: 78px; height: 30px;"><label> <h4 style="color: white;">$</h4> </label><br>
+
+<label><b><h4 style="color: white;">TOTAL:</h4></b></label>
+<input type="text" name="total" value="0" id="r" th:value="${car.Total}" hidden="">
+<input type="text" value="0" id="r1" disabled="disabled" th:value="${car.Total}" 
+style="margin-left: 82px; color: green; width: 80px; height: 30px;"><label> <h4 style="color: white;">$</h4></label><br>
+</div>
+
+<button class="btn btn-success" onclick="multiplicacion(this.value)" 
+style=" margin-top: 30px; width: 400px; height: 40px; margin-left: 50px"><h3>COMPRAR</h3></button>
+<br>
+<a class="btn btn-danger" href="/VistaCarrito"
+style=" margin-top: 30px; width: 400px; height: 40px; margin-left: 50px" >
+ <h3>CANCELAR</h3></a>
+</div>
+
+</form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+function dosDecimales(n) {
+	  let t=n.toString();
+	  let regex=/(\d*.\d{0,2})/;
+	  return t.match(regex)[0];
+	}
+	
+function multiplicacion(valor) {
+   var numero1 = Number($("#a").val());
+   var numero2 = Number($("#b").val());
+   var sumar = numero1 * numero2;
+   var resultado = $("#r").val(dosDecimales(sumar));
+   var resultado = $("#r1").val(dosDecimales(sumar));
+}
+</script>
+</body>
+</html>

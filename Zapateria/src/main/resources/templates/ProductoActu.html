@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/NewFile :: head">
+<meta charset="utf-8">
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Administracion de Productos</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+function remplazar(elemento){
+  let texto = elemento.value 
+  texto = texto.split(/[^A-Za-z]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+<div class="content" id="divEditar" >
+<div class="content">
+        <div class="contact-wrapper">
+            <div class="contact-form"> <br>
+                <h3 align="center"> ACTUALIZAR PRODUCTO</h3>
+<form action="/actualizar" method="post" enctype="multipart/form-data"  modelAttribute="proo">
+
+<input type="text" name="id" th:value=${proo.idProducto} hidden required>
+
+<p>
+<label>NOMBRE</label>
+<input type="text" name="nombre"  th:value=${proo.nombre} required 
+style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="remplazar(this)"> <br>
+</p>
+<p>
+<label>MARCA</label>
+<input type="text" name="marca" required th:value=${proo.marca}
+style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="remplazar(this)"> <br>
+</p>
+<p>
+<label>PRECIO</label>
+<input type="number" placeholder="0" required name="precio" th:value=${proo.Precio} min="1"  step="0.01" title="Currency" 
+pattern="^\d+(?:\.\d{1,2})?$" 
+onblur="this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'"><br>
+</p>
+<p>
+<label>IMAGEN</label>
+<input type="file" name="imagen" required th:value=${proo.imagen}> <br>
+ </p>
+ 
+ <p>
+<label style="margin-left: 5px;" >CATEGORIA</label> <br>
+      <select name="categoria" required style="width: 155px; margin-left: 50px;" th:value=${proo.FkCategoria.nombreC} >
+      <option th:each="ca:${catee2}" th:value="${ca.idCategoria}" th:text="${ca.nombreC}"></option>
+      </select>
+</p>
+
+
+<p>
+<label>TALLA</label>
+<input type="number" name="talla" required th:value=${proo.talla} placeholder="TALLA del zapato"> <br>
+</p>
+
+<p>
+<label>COLOR</label>
+<input type="text" name="colores"required th:value=${proo.colores} placeholder="COLOR del zapato"> <br>
+</p>
+
+<p>
+<label>CANTIDAD</label>
+<input type="number" name="cantidad" required th:value=${proo.cantidad} placeholder="CANTIDAD del zapato"> <br>
+</p>
+
+
+<p class="block">
+<button class="btn btn-success" id="btnA">ACTUALIZAR</button>
+  </p>   
+</form>
+</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<title>Eliminar Carrito</title>
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+<style>
+.encabezado{
+    align-items: center;
+    background-color: #214252;
+    text-align: center;
+    color: white;
+    
+}
+
+.funciones{
+ list-style: none;
+ padding: 0;
+ width: 90%;
+ max-width:1000px;
+ margin: auto;
+ 
+	
+}
+
+
+.funciones li a{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+     display: block;
+}
+.funciones li{
+    display: inline-block;
+    text-align: center;
+
+
+}
+
+.funciones li a:hover{
+    background-color: orange;
+
+}
+</style>
+
+
+    <h1 style="text-align: center;">¿Estas seguro que quieres quitar este producto?</h1>
+
+
+<div style="position: absolute;
+height: 550px;
+width: 1100px;
+background: #214252;
+border-color: rgb(0, 0, 0);
+border:1px solid ;
+margin-left: 100px;
+border-radius: 100px;"> 
+<br>
+
+<form action="/ActualizarCarrito" method="post" modelAttribute="car2"> 
+
+<div style="
+    float: left;
+    width: 560px;
+	height: 500px;
+	margin-left: 50px;
+	margin-top: 10px;
+	background-color: 214252;
+	border-radius: 100px;">
+	
+<img th:src="@{'/imagenes/'+${car2.imagen}}" style="
+margin-left: 35px;
+width: 500px;
+	height: 450px;
+	background-color: 214252;"/><br>
+	
+</div>
+
+<div style="
+    width: 500px;
+	height: 500px;
+	margin-left: 580px;
+	margin-top: 10px;
+	border-radius: 100px;
+	background-color: 214252;">
+	<br>
+<input type="text" name="idcar" required="required" th:value="${car2.idCarrito}" hidden>
+<input type="text" name="img" required="required" th:value="${car2.imagen}" hidden>
+<input type="text" name="fkc" required="required" th:value="${car2.FkCliente2.getId()}" hidden >
+<input type="text" name="FkClientep" required="required" th:value="${car2.FkCliente2.getId()}" hidden >
+<input type="text" name="fkp" th:value="${car2.FkProducto2.getIdProducto()}" hidden>
+<input type="text" name="total" value="0" id="r" th:value="${car2.Total}" hidden>
+
+<div style="margin-left: 100px; margin-top: 100px;">
+
+<label><b><h4 style="color: white;">NOMBRE:</h4></b></label>
+<input type="text" th:value="${car2.nombre}" name="nombre" hidden="">
+<input type="text" th:value="${car2.nombre}" disabled="disabled"  style="margin-left: 50px; color: green;"><br>
+
+<label><b><h4 style="color: white;">CANTIDAD:</h4></b></label>
+<input type="number" name="Cantidad" th:value="${car2.Cantidad}" hidden>
+<input type="number" th:value="${car2.Cantidad}" max="50" min="1" required style="margin-left: 30px; color: green;" disabled><br>
+
+<label><b><h4 style="color: white;">PRECIO:</h4></b></label>
+<input type="text" th:value="${car2.precio}"  name="precio"  hidden="">
+<input type="text" th:value="${car2.precio}"  disabled="disabled"  
+style="margin-left: 65px; color: green; width: 78px; height: 28px;"><label> <h4 style="color: white;">$</h4> </label><br>
+</div>
+
+<input type="text" name="idproooo" th:value="${car2.FkProducto2.idProducto}"  hidden>
+		<input type="text" name="nombrepp" th:value="${car2.FkProducto2.nombre}" hidden >
+		<input type="text" name="preciopp" th:value="${car2.FkProducto2.Precio}" hidden>
+		<input type="text" name="imagenpp" th:value="${car2.FkProducto2.imagen}"hidden >
+		<input type="text" name="estadopp" th:value="${car2.FkProducto2.estado}" hidden>
+		<input type="text" name="marcapp" th:value="${car2.FkProducto2.marca}" hidden>
+		<input type="text" name="tallapp" th:value="${car2.FkProducto2.talla}" hidden>
+		<input type="text" name="colorespp" th:value="${car2.FkProducto2.colores}" hidden>
+		<input type="text" name="cantidadpp" th:value="${car2.FkProducto2.cantidad}" hidden>
+	    <input type="text" name="cantidadcc" th:value="${car2.Cantidad}" hidden>
+
+		<input type="text" name="categoriapp" th:value="${car2.FkProducto2.FkCategoria.idCategoria}" hidden>
+				
+<button class="btn btn-success" onclick="multiplicacion(this.value)" 
+style=" margin-top: 30px; width: 400px; height: 40px; margin-left: 50px"><h3>Eliminar</h3></button>
+<a class="btn btn-info" href="/VistaCarrito"
+style=" margin-top: 30px; width: 400px; height: 40px; margin-left: 50px"><h3 style="color: white;">VOLVER</h3></a>
+</div>
+
+</form>
+
+</div>
+</body>
+</html>

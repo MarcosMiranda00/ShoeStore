@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+ <link>
+<title>Carrito</title>
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+	<h1><label modelAttribute="ERROR1" th:text="${mensaje}" style="color: blue;"></label  ></h1>	
+
+    <h1 style="text-align: center;">¿Estas seguro que quieres agregar al carrito este producto?</h1> <br>
+
+
+
+
+<div style="
+    width: 560px;
+	height: 560px;
+	float: left;
+	background-color: 214252;
+	margin-left: 400px;
+	margin-top: 20px;
+	border-radius: 10px;">
+	
+	
+	
+<img th:src="@{'/imagenes/'+${prod.imagen}}" style="
+	width: 300px;
+	height: 300px;
+	margin-left: 140px;
+	margin-top: 10px;
+	border-radius: 100px;
+	background-color: 214252;" />
+
+<div style="width: 450px;
+	height: 225px;
+	margin-left: 60px;
+	margin-top: 10px;
+	background-color: white;
+	border-radius: 30px;">
+	
+
+
+<form action="/GuardarCarrito" method="post" modelAttribute="prod">
+
+<div style="margin-left: 70px; margin-top: 10px;">
+<br>
+<label style="color: black; margin-left: 80px">NOMBRE:</label>
+<label th:text="${prod.nombre}" style="color: black; margin-left: 15px;"></label><br>
+
+<label style="color: black;  margin-left: 80px">MARCA:</label>
+<label th:text="${prod.marca}" style="color: black; margin-left: 15px;"></label><br>
+
+<label style="color: black;  margin-left: 80px">PRECIO:</label>
+<label th:text="${prod.Precio}" style="color: black; margin-left: 25px;"></label><label style="color: black;">$</label><br>
+
+<input type="hidden" name="nombre"  th:value="${prod.nombre}" required="required">
+<input type="hidden" name="Precio" th:value="${prod.Precio}" required="required" id="b" onchange="multiplicacion(this.value);">
+<input type="hidden" name="imagen"  th:value="${prod.imagen}" required="required">
+<input type="hidden" name="FkProducto2"  th:value="${prod.idProducto}"required="required">
+<input type="hidden" name="FkCliente2" required="required" th:value="${cliend}">
+<input type="hidden" name="FkClientep" required="required" th:value="${cliend}">
+
+<label style="color: black;  margin-left: 80px">CANTIDAD:</label>
+<input type="number" name="cantidad" min="1" max="50" value="1" required="required" 
+style=" margin-left: 10px; width: 100px;" id="a" onchange="multiplicacion(this.value);"><br>
+<input type="hidden" name="Total" required="required" id="r" th:value="${prod.Precio}">
+</div>
+
+				<input type="text" name="nombrepp" th:value="${prod.nombre}" hidden>
+				<input type="text" name="preciopp" th:value="${prod.Precio}" hidden>
+				<input type="text" name="imagenpp" th:value="${prod.imagen}" hidden>
+				<input type="text" name="estadopp" th:value="${prod.estado}" hidden>
+				<input type="text" name="marcapp" th:value="${prod.marca}" hidden>
+				<input type="text" name="tallapp" th:value="${prod.talla}" hidden>
+				<input type="text" name="colorespp" th:value="${prod.colores}" hidden>
+				<input type="text" name="cantidadpp"  th:value="${prod.cantidad}" hidden>
+				<input type="text" name="categoriapp" th:value="${prod.FkCategoria.idCategoria}" hidden>
+				<br>
+ 
+<a><input type="submit"  class="btn btn-info" value="SI" 
+style=" margin-top: 15px; width: 200PX; height: 40px; margin-left: 20px;" id="BtnG"></a>
+
+<a href="/compra" class="btn btn-danger" 
+style=" margin-top: 15px; width: 200PX; height: 40px;" id="btnC2">NO</a>
+</form>
+ </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+$("#btnC2").click(function(){
+	Swal.fire({
+  position: 'center',
+  icon: 'error',
+  title: 'Cancelado',
+  showConfirmButton: false,
+  timer: 5000
+})
+});
+</script>
+<script>
+function multiplicacion(valor) {
+   var numero1 = Number($("#a").val());
+   var numero2 = Number($("#b").val());
+   var sumar = numero1 * numero2;
+   var resultado = $("#r").val(sumar);
+   var resultado = $("#r1").val(sumar);
+}
+</script>
+
+</body>
+</html>

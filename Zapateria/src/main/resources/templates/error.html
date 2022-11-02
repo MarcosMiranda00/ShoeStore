@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.springframework.org/extras/spring-security">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+	integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+	crossorigin="anonymous" />
+
+<title>Login</title>
+</head>
+<body style="
+background: url('https://i.pinimg.com/originals/d2/06/86/d20686fa16e34851f53782c6ec821062.jpg');
+background-size: 1366px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 pt-5 mt-5 text-success">
+				<div sec:authorize="isAuthenticated()">
+				<h1 style="color: white;">El recurso solicitado no existe <a href="/Menu" style="color: black;">Regresar al sistema</a></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

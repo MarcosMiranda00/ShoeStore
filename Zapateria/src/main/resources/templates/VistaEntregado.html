@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Compra</title>
+</head>
+<body>
+<form action="/ActualizarC" method="POST" modelAttribute="Detalle">
+	<input type="number" name="idc" th:value="${Detalle.FkCompra.idCompra}" hidden>
+	
+	<label>PRODUCTO</label>
+	<input type="text" name="produ" th:value="${Detalle.FkProducto.nombre}" disabled>
+	<br>
+	<label>FECHA DE LA COMPRA</label>
+	<input type="text" name="fecha" th:value="${Detalle.FkCompra.Fecha}" disabled>
+	<br>
+	<label>TOTAL DE LA COMPRA</label>
+	<input type="text" th:value="${Detalle.FkCompra.Total}" disabled>
+	<input type="text" name="total" th:value="${Detalle.FkCompra.Total}" hidden>
+	<br>
+	<button>ACTUALIZAR</button>
+</form>
+</body>
+</html>

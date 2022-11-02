@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts/NewFile :: head">
+	<meta charset="utf-8">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CATEGORIAS</title>
+</head>
+
+<body>
+	<h4 style="text-align: center;">CATEGORIAS</h4>
+	<a href="/NuevaCategoria" class="btn btn-danger">Nueva CATEGORIA</a>
+	<a href="/Producto" class="btn btn-danger">REGRESAR</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">nombre</th>
+				<th scope="col">OPCIONES</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c:${catEE}">
+				<td th:text="${c.idCategoria}"></td>
+				<td th:text="${c.nombreC}"></td>
+				<td>
+					<a th:href="@{/llevarCat/}+${c.idCategoria}" class="btn btn-danger">Actualizar</a>
+					<a th:href="@{/BorrarCate/}+${c.idCategoria}" class="btn btn-danger">Eliminar</a>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

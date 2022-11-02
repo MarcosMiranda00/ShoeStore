@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head >
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Perfil</title>
+</head>
+
+<body>
+		<form action="/ActualizarUser" method="post" modelAttribute="usu">
+		<input type="number" name="idU" th:value=${usu.id} hidden>
+		<input type="text"  th:value=${usu.getRoles()} hidden>
+
+			<p>
+				<label for="fullname" style="color: black">Primer Nombre</label>
+				<input style="text-align: center;" type="text" name="Pnombre" required
+					placeholder="Escriba su primer nombre" title="Escriba su primer nombre" 
+					th:value=${usu.nombre1}>
+			</p>
+			<p>
+				<label for="fullname" style="color: black">Segundo Nombre</label>
+				<input style="text-align: center;" type="text" name="Snombre" required
+					placeholder="Escriba su segundo nombre" title="Escriba su segundo nombre" 
+					th:value=${usu.nombre2}>
+			</p>
+			<p>
+				<label for="" style="color: black">Primer apellido</label>
+				<input style="text-align: center;" type="text" name="Papellido" required
+					placeholder="Escriba su primer apellido" title="Escriba su primer apellido" 
+					th:value=${usu.apellido}>
+			</p>
+
+			<p>
+				<label for="" style="color: black">Segundo apellido</label>
+				<input style="text-align: center;" type="text" name="Sapellido" required
+					placeholder="Escriba su segundo apellido" title="Escriba su segundo apellido"
+					th:value=${usu.apellido2}>
+			</p>
+			<p>
+				<label for="" style="color: black">Correo</label>
+				<input style="text-align: center;" type="email" name="correo" required
+					placeholder="Escriba su correo electronico" title="Escriba su correo electronico"
+					th:value=${usu.nick}>
+			</p>
+			<p>
+				<label for="" style="color: black">Nueva Contraseña</label>
+				<input style="text-align: center;" type="password" name="password"
+					placeholder="Escriba la contraseña sin signos: $,@,#,% " minlength="4" maxlength="10" min="4"
+					max="100" title="Escriba la contraseña sin signos: $,@,#,%" >
+					<span>La nueva Contraseña no es obligatoria en caso de no poner nada seguira con la anterior que tenia</span>
+					<br>
+				<input type="text" th:value=${usu.clave} name="pass" required hidden>
+			</p>
+			<p>
+				<label for="" style="color: black">Dui</label>
+				<input style="text-align: center;" type="text" name="dui" placeholder="Escriba su dui sin guion"
+					pattern="[0-9]+" minlength="9" maxlength="9" title="Escriba su dui sin guion" required=""
+					th:value=${usu.dui}>
+			</p>
+			<p>
+				<label for="" style="color: black">Direccion</label>
+				<input   type="" name="dire" required th:value=${usu.direcion}>
+			</p>
+
+			<button style="background-color: red; border-radius: 4px; color: white; margin-left: 250px"
+				type="submit" class="btn btn-danger">ACTUALIZAR</button>
+				
+				<a href="/perfil" class="btn btn-primary">Regresar</a>
+
+		</form>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<head th:replace="layouts/NewFile :: head">
+	<link rel="stylesheet" type="text/css" href="css/styleM.css">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+		integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+	<link rel="stylesheet" type="text/css" href="css/LoginStyle.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<title>Vista Carrito</title>
+</head>
+	<h1><label  th:text="${mensaje}" style="color: blue;"></label  ></h1>	
+
+<body style="background-color: white">
+
+	<header class="encabezado" style=" 
+    background-color:#CACACA;
+    
+    width: 2250px;
+    height: 160px;">
+
+
+		<img src="/img/logoshoes.png" style="
+   position: absolute;
+    height: 200px; 
+    width: 320px; 
+    " alt="">
+
+		<a href="/compra"><img src="img/cerrarsesion.png" style=" height: 50px; 
+    width: 50px; position: absolute; margin-left: 1990px; margin-top: 50px;"></a>
+
+
+
+		<nav>
+			<ul class="funciones">
+				<li></li>
+			</ul>
+		</nav>
+	</header>
+
+
+	<div align="center">
+		<p th:if="${mensaje}" th:text="${mensaje}"></p>
+	</div>
+
+
+	<div th:each="c:${carr}" th:if="${c.FkCliente2.getId()==user} and ${c.estado=='espera'}" style="width: 370px;
+	height: 250px;
+	float: left;
+	background-color:#CACACA;
+	margin-left: 20px;
+	margin-top: 20px;
+border-radius: 4px;
+	margin-left: 60px;">
+
+		<div style="width: 370px;
+	height: 80px;
+	float: right;
+	background-color:white;
+	
+	
+  position: absolute;
+  margin-top: 180px;
+	">
+			<label style="color: black; font-size: 150%;">
+				<h1 style="font-size: 60%; color: red; margin-top: 48px; margin-left: 20px; position: absolute;">$</h1>
+			</label>
+			<label
+				style="color: black; font-size: 100%; margin-top:70px;margin-left:20px; position: absolute;">Cantidad:</label>
+			<label th:text="${c.idCarrito}" hidden></label><br>
+			<label style="color: black; font-size: 150%;"></label>
+			<label th:text="${c.nombre}"
+				style="color: black; font-size: 100%; position: absolute; margin-left: 20px;"></label><br>
+
+			<label th:text="${c.precio}"
+				style="color: red; font-size: 100%; position: absolute; margin-top: 5px; margin-left: 29px;"></label>
+
+			<label th:text="${c.Cantidad}"
+				style="color: black; margin-top: 22px; font-size:100%; margin-left: 95px;"></label>
+		</div>
+		<br>
+		<div style="width: 200px;
+	height: 150px;
+	margin-left: 90px;
+	margin-top: 10px;
+	
+	"><img th:src="@{'/imagenes/'+${c.imagen}}" style="width: 100%; height: 100%;
+	border-radius: 50px;" /></div>
+
+
+		<a th:href="@{/llevardatos2/}+${c.idCarrito}"
+			style=" margin-left: 300px; margin-top:35px; position: absolute;"><img src="img/carros.png"
+				style="width: 40px; height: 35px;"></a>
+		<a th:href="@{/llevardatos3/}+${c.idCarrito}"
+			style=" margin-left: 250px; margin-top:35px; position: absolute;"><img src="img/eliminar.png"
+				style="width: 30px; height: 32px;"></a>
+	</div>
+
+
+</body>
+
+</html>

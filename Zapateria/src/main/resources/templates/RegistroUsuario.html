@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:replace="layouts/NewFile :: head">
+<title>Regristro Usuario</title>
+</head>
+<div style="background-color:#CACACA; width: 3200px; height: 115px; margin-right: 100%; ">  
+ <img style="
+   position: absolute;
+    height: 155px; 
+    width: 200px; 
+    " src="img/logoshoes.png">
+
+    <a href="/logout" ><img  src="img/cerrarsesion.png" style=" height: 50px; 
+    width: 50px; position: absolute; margin-left: 1970px; margin-top: 27px;"></a>
+  </div>
+
+<body
+style="
+background-color: white;
+background-size: 1366px;">
+
+
+
+<div class="content" style="margin-top: 100px;">
+        <div class="contact-wrapper" >
+            <div class="contact-form" style="background-color: #F1F1F1"> <br>
+                <h3 align="center" style="color: black"> Regsitro Usuario</h3>
+                <form action="/CrearRegistro" method="post">
+                    <p>
+                        <label for="fullname" style="color: black">Primer Nombre</label>
+                        <input style="text-align: center;" type="text" name="Pnombre" required placeholder="Escriba su primer nombre" 
+                        title="Escriba su primer nombre"onkeyup="text(this)">
+                    </p>
+                    <p>
+                        <label for="fullname" style="color: black">Segundo Nombre</label>
+                        <input style="text-align: center;" type="text" name="Snombre" required placeholder="Escriba su segundo nombre" 
+                        title="Escriba su segundo nombre" onkeyup="text(this)">
+                    </p>
+                    <p>
+                        <label for="" style="color: black">Primer apellido</label>
+                        <input style="text-align: center;" type="text" name="Papellido" required placeholder="Escriba su primer apellido" 
+                        title="Escriba su primer apellido" onkeyup="text(this)">
+                    </p>
+                    
+                    <p>
+                        <label for="" style="color: black">Segundo apellido</label>
+                        <input style="text-align: center;" type="text" name="Sapellido" required placeholder="Escriba su segundo apellido" 
+                        onkeyup="text(this)" title="Escriba su segundo apellido"> 
+                    </p>
+                    <p>
+                        <label for="" style="color: black">Correo</label>
+                        <input style="text-align: center;" type="email" name="correo" required 
+                        placeholder="Escriba su correo electronico" onkeyup="cor(this)" title="Escriba su correo electronico">
+                    </p>
+                    <p>
+                       <label for="" style="color: black">Contraseña</label> 
+                       <input style="text-align: center;" type="password" name="password" required 
+                       placeholder="Escriba la contraseña sin signos: $,@,#,% " minlength="4"
+                       maxlength="10" min="4" max="100" onkeyup="contra(this)" title="Escriba la contraseña sin signos: $,@,#,%">
+                    </p>
+                    <p>
+                        <label for="" style="color: black">Dui</label>
+                        <input style="text-align: center;" type="text" name="dui" placeholder="Escriba su dui sin guion" pattern="[0-9]+" minlength="9" maxlength="9"  
+                        title="Escriba su dui sin guion" required="">
+                    </p>
+                    <p>
+                        <label for="" style="color: black">Direccion</label >
+                        <input style="text-align: center; " type="text" name="dire" required placeholder="Escriba su direccion" onkeyup="contra(this)">
+                    </p>
+                   
+                         <button  style="background-color: red; border-radius: 4px; color: white; margin-left: 250px" type="submit" >Crear registro</button>
+                                   
+                </form>
+            </div>
+        </div>
+    </div>
+ <script type="text/javascript">
+function text(elemento){
+  let texto = elemento.value
+  texto = texto.split(/[^A-Za-z\ñ]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+ <script type="text/javascript">
+function nume(elemento){
+  let texto = elemento.value
+  texto = texto.split(/[^0-9]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+ <script type="text/javascript">
+function contra(elemento){
+  let texto = elemento.value
+  texto = texto.split(/[^A-Za-z0-9]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+<script type="text/javascript">
+function cor(elemento){
+  let texto = elemento.value 
+  texto = texto.split(/[^A-Za-z0-9\@\.]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+</body>
+</html>

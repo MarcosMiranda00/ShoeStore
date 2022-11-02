@@ -1,0 +1,57 @@
+@charset "ISO-8859-1";
+*{
+ margin: 0px;
+ padding: 0px;
+ box-sizing: border-box;
+
+}
+.registro{
+    background: #eeeeee;
+    width: 500px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+body{
+        font-family: 'calibri', sans-serif;
+        background-color:#393e46;
+        background-size: cover;  
+}
+.texto{
+    font-size: 300%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.dato{
+    font-size: 200%;
+    font-family: arial;
+}
+label{
+    font-size: 150%;
+}
+marquee{
+    font-size: 250%;
+    font-family: monospace;
+    color: #393e46;
+}
+.btnr{
+    font-size: 120%;
+    float: left;
+    width: 20.8%;
+    margin: 3px;
+    padding: 3px;
+}
+.btnre{
+    padding: 3px;
+    margin: 3px;
+    font-size: 120%;
+    width: 22.8%;
+    background-color:white;
+}
+@media only screen and (max-width:620px) {
+  /* Adecuarlo a telefonos */
+  .menu, .main, .right {
+    width:100%;
+  }
+}
+

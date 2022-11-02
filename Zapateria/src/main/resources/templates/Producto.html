@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/NewFile :: head">
+<meta charset="utf-8">
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<title>Administracion de Productos</title>
+</head>
+<body
+style="
+background-color: white;
+background-size: 100%; ">
+<header style="background-color: #CACACA; width: 2500; height: 120px;" >
+<div>
+    <li><img src="img/logoshoes.png" style="width: 200px; height: 120px; margin-right: 300px ; position: absolute;"></li>
+     <li><a href="/compra"style="margin-top: 10px; width: 50px; height: 50px"><img style="width: 50px; height: 50px; margin-left: 400px; position: absolute; " src="img/cerrarsesion.png"></a></li>
+    <nav>
+        <ul class="funciones">       
+        <li><a th:onclick="lista()" style="margin-top: 20px;">LISTA DE PRODUCTOS</a></li>  
+        <li><a th:onclick="nuevo()"style="margin-top: 20px">NUEVO PRODUCTO</a></li>
+        <li><a href="/categorias"style="margin-top: 20px; margin-right: 440px;">NUEVA CATEGORIA</a></li> 
+       
+        </ul>
+    </nav>
+
+</header>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+function lista(){
+	document.getElementById("divLista").style.display="block";
+	document.getElementById("divNuevo").style.display="none";
+	document.getElementById("divEditar").style.display="none";
+}
+</script>
+
+<script type="text/javascript">
+function nuevo(){
+	document.getElementById("divNuevo").style.display="block";
+	document.getElementById("divLista").style.display="none";
+	document.getElementById("divEditar").style.display="none";
+}
+</script>
+
+<script type="text/javascript">
+$("#BtnG").click(function(){
+	Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Guardado Correctamente',
+  showConfirmButton: false,
+  timer: 5000
+})
+});
+</script>
+<script type="text/javascript">
+$("#btnC").click(function(){
+	Swal.fire({
+  position: 'center',
+  icon: 'error',
+  title: 'Cancelado',
+  showConfirmButton: false,
+  timer: 5000
+})
+});
+</script>
+<script type="text/javascript">
+$("#btnC2").click(function(){
+	Swal.fire({
+  position: 'center',
+  icon: 'error',
+  title: 'Cancelado',
+  showConfirmButton: false,
+  timer: 5000
+})
+});
+</script>
+<script type="text/javascript">
+$("#btnA").click(function(){
+	Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Actualizado Correctamente',
+  showConfirmButton: false,
+  timer: 5000
+})
+});
+</script>
+
+
+<div id="divLista" style="display: block">
+<div th:each="p:${Producto}" style="width: 380px;
+	height: 270px;
+	float: left;
+	background-color: #C9E0D4;
+	margin-left: 20px;
+	margin-top: 20px;
+	border-radius: 10px;">
+
+<div style="width: 160px;
+	height: 250px;
+	float: right;
+	background-color: #C9E0D4;
+	margin-right: 10px;
+	text-align: center;">
+
+<label th:text="${p.idProducto}" hidden></label><br>
+
+<label style="color: black;">NOMBRE:</label>
+<label th:text="${p.nombre}" style="color: black;"></label><br>
+<label style="color: black;">MARCA:</label>
+<label th:text="${p.marca}" style="color: black;"></label><br>
+<label style="color: black;">PRECIO:</label>
+<label th:text="${p.Precio}" style="color: black;"></label> <label style="color: black;">$</label><br>
+</div>
+
+<div style=
+   "width: 150px;
+	height: 150px;
+	margin-left: 5px;
+	margin-top: 10px;
+	background-color: white;"><img th:src="@{'/imagenes/'+${p.imagen}}" style="width: 100%; height: 100%;" /></div>
+
+
+<br>
+<a th:href="@{/llevarPro/}+${p.idProducto}" class="btn btn-success" style="margin-left: 10px; margin-top: 20px">Editar</a>
+<a th:href="@{/BorrarProducto/}+${p.idProducto}" id="btne" class="btn btn-danger" style="margin-left: 10px; margin-top: 20px" >ELIMINAR</a>
+
+</div>
+</div>
+
+<script type="text/javascript">
+$("#btne").click(function(){
+	Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Eliminado Correctamente',
+  showConfirmButton: false,
+  timer: 5000
+})
+});
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+function remplazar(elemento){
+  let texto = elemento.value 
+  texto = texto.split(/[^A-Za-z]/)
+  texto = texto.join("")
+  elemento.value = texto
+}
+</script>
+
+<div class="content" id="divNuevo" style="display: none;">
+<div class="content">
+        <div class="contact-wrapper">
+            <div class="contact-form"> <br>
+                <h3 align="center"> CREAR PRODUCTO</h3>
+<form action="/CrearProducto" method="post" enctype="multipart/form-data">
+<p>
+<label>NOMBRE</label>
+<input type="text" name="nombre"
+required="required" placeholder="Nombre del zapato" 
+style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="remplazar(this)" >
+<br>
+</p>
+<p>
+<label>MARCA</label>
+<input type="text" name="marca" required placeholder="Marca del zapato"
+style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" oninput="remplazar(this)"> <br>
+</p>
+<p>
+<label>PRECIO</label>
+<input type="number" placeholder="0" required name="precio" min="1" step="0.01" title="Currency" pattern="^\d+(?:\.\d{1,2})?$" onblur="
+this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'"><br>
+<!--  <input type="number" name="precio" required min="1" placeholder="Precio del zapato">-->
+</p>
+<p>
+<label>IMAGEN</label>
+<input type="file" name="imagen" required placeholder="Imagen del zapato"> <br>
+</p>
+
+<p>
+<label>TALLA</label>
+<input type="number" name="talla" required placeholder="TALLA del zapato"> <br>
+</p>
+
+<p>
+<label>COLOR</label>
+<input type="text" name="colores" required placeholder="COLOR del zapato"> <br>
+</p>
+
+<p>
+<label>CANTIDAD</label>
+<input type="number" name="cantidad" required placeholder="CANTIDAD del zapato"> <br>
+</p>
+
+<p>
+<label style="margin-left: 5px;" >CATEGORIA</label> <br>
+      <select name="categoria" required style="width: 155px; margin-left: 50px;">
+      <option th:each="ca:${catee}" th:value="${ca.idCategoria}" th:text="${ca.nombreC}"></option>
+      </select>
+</p>
+
+<p class="block">
+<button class="btn btn-danger" id="BtnG">GUARDAR</button>
+</p>
+</form>
+</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
